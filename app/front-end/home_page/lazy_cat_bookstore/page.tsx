@@ -1,23 +1,53 @@
 "use client"; 
+import Link from "next/link";
 import { useState } from "react";
-const pieces = [
+
+type Piece = {
+    Category: string;
+    Title: string;
+    Description: string;
+    image?: string;
+    video?: string;
+    href?: string;
+};
+
+const pieces: Piece[] = [
     {
-        Category: "Technical",
-        image: "/photos/Placeholder.jpeg",
-        Description: "Testing 1",
+        Category: "Copy",
+        Title: "Bose x LISA",
+        video: "/videos/BosexLISA.mov",
+        href: "/front-end/home_page/lazy_cat_bookstore/pieces/bose-x-lisa",
+        Description: "CRM, Web content, email, app",
     },
     {
         Category: "Copy",
+        Title: "Ultra Open Earbuds Evergreen",
+        video: "/videos/UOE.mov",
+        href: "/front-end/home_page/lazy_cat_bookstore/pieces/UOE",
+        Description: "PRD, website, Amazon",
+    },
+    {
+        Category: "Copy",
+        Title: "UConn Giveaway",
+        image: "/photos/placeholder.jpeg",
+        href: "/front-end/home_page/lazy_cat_bookstore/pieces/uconn-giveaway",
+        Description: "Bose giveaway campaign copy",
+    },
+    {
+        Category: "Copy",
+        Title: "Copy project",
         image: "/photos/Placeholder.jpeg",
         Description: "Testing 2",
     },
     {
         Category: "Creative",
+        Title: "Creative project",
         image: "/photos/Placeholder.jpeg",
         Description: "Testing 3",
     },
     {
         Category: "Creative",
+        Title: "Creative project",
         image: "/photos/Placeholder.jpeg",
         Description: "Testing 3",
     },
@@ -30,7 +60,7 @@ export default function LazyCatBookstore() {
         : [];
 
     return (
-        <div className="flex w-full flex-col items-start gap-4">
+        <div className="flex min-h-screen w-full flex-col items-start gap-4 bg-white">
             <button className="m-4 p-2 rounded-[1vw] border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 focus:ring-4focus:ring-blue-300">
                 Back
             </button>
@@ -63,13 +93,46 @@ export default function LazyCatBookstore() {
             </div>
             <div>
                 {selectedCategory && (
-                    <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
-                        {filteredPieces.map((piece, index) => (
-                            <div key={index} className="flex flex-col items-center text-center">
-                                <img src={piece.image} width="100" alt="Placeholder Image" />
-                                <h2>{piece.Description}</h2>
-                            </div>
-                        ))}
+                    <div className="grid w-full grid-cols-1 justify-items-start gap-4 sm:grid-cols-3">
+                        {filteredPieces.map((piece, index) => {
+                            const cardContent = (
+                                <div className="flex h-[280px] w-full max-w-[320px] flex-col overflow-hidden rounded border border-gray-300 bg-white text-left shadow-sm transition hover:border-gray-500">
+                                    {piece.video ? (
+                                        <video
+                                            className="h-44 w-full shrink-0 object-cover"
+                                            src={piece.video}
+                                            muted
+                                            autoPlay
+                                            loop
+                                            playsInline
+                                            preload="metadata"
+                                            aria-label={`${piece.Description} video preview`}
+                                        />
+                                    ) : (
+                                        <img className="h-44 w-full shrink-0 object-cover" src={piece.image} alt={piece.Title} />
+                                    )}
+                                    <div className="flex min-h-0 flex-1 flex-col gap-1 p-3">
+                                        <h2 className="font-semibold">{piece.Title}</h2>
+                                        <p className="line-clamp-2 text-sm text-gray-600">{piece.Description}</p>
+                                    </div>
+                                </div>
+                            );
+
+                            return piece.href ? (
+                                <Link
+                                    key={index}
+                                    href={piece.href}
+                                    aria-label={`Read ${piece.Title}: ${piece.Description}`}
+                                    className="w-full max-w-[320px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                                >
+                                    {cardContent}
+                                </Link>
+                            ) : (
+                                <div key={index} className="w-full max-w-[320px]">
+                                    {cardContent}
+                                </div>
+                            );
+                        })}
                     </div>
                 )}
             </div>
