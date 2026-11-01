@@ -1,6 +1,8 @@
 "use client"; 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { blogPosts, formatBlogDate } from "./blogs/blogData";
 
 type Piece = {
     Category: string;
@@ -71,6 +73,24 @@ export default function LazyCatBookstore() {
             <div className="flex w-full items-center justify-center gap-4">
             <h1 className="text-center">Blogs</h1>
             </div>
+            <section aria-label="Latest blog posts" className="w-full px-4 pb-4">
+                <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {blogPosts.map((post) => (
+                        <Link
+                            key={post.slug}
+                            href={`/front-end/home_page/lazy_cat_bookstore/blogs/${post.slug}`}
+                            className="group flex h-full flex-col overflow-hidden border border-gray-300 bg-white text-left transition hover:border-pink-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-700"
+                        >
+                            <Image className="aspect-[16/9] w-full object-cover" src={post.image} alt={post.imageAlt} width={1200} height={675} />
+                            <div className="flex flex-1 flex-col p-4">
+                                <time className="text-sm text-gray-600" dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt)}</time>
+                                <h2 className="mt-2 text-xl font-bold text-gray-950 group-hover:text-pink-800">{post.title}</h2>
+                                <p className="mt-2 text-sm leading-6 text-gray-700">{post.excerpt}</p>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </section>
             <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="flex flex-col items-center text-center">
                     <button onClick={() => setSelectedCategory("Copy")} className="m-4 p-2 rounded-[1vw] border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300">
