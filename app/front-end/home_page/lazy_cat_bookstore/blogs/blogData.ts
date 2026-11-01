@@ -1,5 +1,6 @@
 import blogThreePost from "./blog-3/post";
 import blogOnePost from "./blog-1/post";
+import blogTwoPost from "./blog-2/post"; 
 
 export type BlogContentBlock =
     | { type: "paragraph"; text: string }
@@ -15,6 +16,7 @@ export type BlogContentBlock =
     }
     | { type: "dragReveal"; prompt: string; image: string; imageAlt: string }
     | { type: "scratchReveal"; prompt: string; leadIn: string; murdererName: string }
+    | { type: "rotateText"; prompt: string; text: string }
     | { type: "definition"; id: string; term: string; definition: string };
 
 export type BlogPost = {
@@ -27,7 +29,7 @@ export type BlogPost = {
     body: BlogContentBlock[];
 };
 
-export const blogPosts: BlogPost[] = [blogOnePost, blogThreePost];
+export const blogPosts: BlogPost[] = [blogOnePost, blogTwoPost, blogThreePost];
 
 export const dictionaryEntries = blogPosts.flatMap((post) =>
     post.body.flatMap((block) =>

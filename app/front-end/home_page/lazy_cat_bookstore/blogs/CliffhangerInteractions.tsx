@@ -15,6 +15,36 @@ type ScratchRevealProps = {
     murdererName: string;
 };
 
+type RotateTextProps = {
+    prompt: string;
+    text: string;
+};
+
+export function RotateText({ prompt, text }: RotateTextProps) {
+    const [isUpright, setIsUpright] = useState(false);
+
+    return (
+        <section className="my-8 border-y border-gray-300 py-6" aria-label="Rotate text interaction">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#3380B7]">Turn the line</p>
+            <p className="mt-1 text-gray-800">{prompt}</p>
+            <div className="mt-4 flex min-h-48 items-center justify-center overflow-hidden bg-[#F3F4F6] p-6">
+                <button
+                    type="button"
+                    aria-pressed={isUpright}
+                    onClick={() => setIsUpright((upright) => !upright)}
+                    className="min-h-12 min-w-48 bg-white px-6 py-3 text-xl font-bold text-gray-950 shadow-sm transition-transform duration-500 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3380B7]"
+                    style={{ transform: `rotate(${isUpright ? 0 : -90}deg)` }}
+                >
+                    {text}
+                </button>
+            </div>
+            <p className="mt-2 text-sm text-gray-600" aria-live="polite">
+                {isUpright ? "The line is upright." : "The line is sideways."}
+            </p>
+        </section>
+    );
+}
+
 export function DragReveal({ prompt, image, imageAlt }: DragRevealProps) {
     const stageRef = useRef<HTMLDivElement>(null);
     const isDragging = useRef(false);
@@ -80,7 +110,7 @@ export function DragReveal({ prompt, image, imageAlt }: DragRevealProps) {
     return (
         <section className="my-8 border-y border-gray-300 py-6" aria-label="Drag to reveal an image">
             <p className="text-sm font-semibold uppercase tracking-wide text-[#3380B7]">Cliffhanger 1</p>
-            <p className="mt-1 text-gray-800">{prompt} Arrow keys move the square; Home resets it.</p>
+            <p className="mt-1 text-gray-800">{prompt}</p>
             <div ref={stageRef} className="relative mx-auto mt-4 aspect-[17/10] w-full max-w-2xl touch-none overflow-hidden bg-gray-100">
                 <div className="absolute left-[7.5%] top-1/2 aspect-[16/9] w-[35%] -translate-y-1/2 overflow-hidden bg-gray-200">
                     <Image src={image} alt={imageAlt} fill sizes="(max-width: 768px) 35vw, 235px" className="object-cover" />
@@ -101,7 +131,6 @@ export function DragReveal({ prompt, image, imageAlt }: DragRevealProps) {
                     }}
                 />
             </div>
-            <p className="mt-3 text-sm text-gray-600">Move the square into the open space to uncover the image.</p>
         </section>
     );
 }

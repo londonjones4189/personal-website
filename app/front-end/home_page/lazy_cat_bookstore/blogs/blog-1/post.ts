@@ -4,9 +4,9 @@ const blogOnePost: BlogPost = {
     slug: "blog-1",
     title: "Identifying Body In Book Technology",
     publishedAt: "2026-10-31",
-    image: "/photos/Placeholder.jpeg",
-    imageAlt: "Placeholder image for the blog post",
-    excerpt: "A few thoughtful words can turn a confusing interface into a welcoming one.",
+    image: "/photos/cat.jpeg",
+    imageAlt: "cat reading a book",
+    excerpt: "A book can be viewed as a body. They have spines like us, which crack if pushed too far. Similarly, they have heads (headers), feet (footers), and sometimes even ears (doggy-flapped pages)...",
     body: [
         {
             type: "paragraph",
@@ -14,7 +14,7 @@ const blogOnePost: BlogPost = {
         },
          {
             type: "paragraph",
-            text: "If bodies impact the way we read, how do we read differently when the body of a text becomes a phone or a computer? What physical affordances does a book have and how can they be transferred to the screen?  How can identifying bodies expand book technology? ",
+            text: "If bodies impact the way we read, how do we read differently when the body of a text becomes a phone or a computer? What physical affordances does a book have and how can they be transferred to the screen?  How can identifying bodies expand book    technology? ",
         },
         { type: "heading", text: "First, what is book technology?" },
         {
@@ -69,7 +69,7 @@ const blogOnePost: BlogPost = {
           {
                 type: "dragReveal",
                prompt: "Drag the large purple square away from the image to reveal it.",
-                image: "/photos/placeholder.jpeg",
+                image: "/photos/heart.png",
                 imageAlt: "The image revealed beneath the purple cover",
         },
          {
@@ -82,7 +82,11 @@ const blogOnePost: BlogPost = {
             type: "paragraph",
             text: "The cliffhanger is only one translation from book to screen, but it moves us a step closer to unlocking the “activating” potential of digital spaces. And maybe in time the next great page-turner won’t be a book at all."
         },
-        
+        { type: "heading", text: "Works Cited" },
+        {
+            type: "paragraph",
+            text: "“Why Reading Physical Books Still Matters in the Digital Age?” HarperCollins India, 13 Mar. 2026, https://harpercollins.co.in/blog/why-reading-physical-books-still-matters-in-the-digital-age-2"
+        }  
     ]
 };
 

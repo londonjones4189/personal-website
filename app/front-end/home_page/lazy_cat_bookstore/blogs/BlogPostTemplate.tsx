@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BlogDefinition from "./BlogDefinition";
-import { DragReveal, ScratchReveal } from "./CliffhangerInteractions";
+import { DragReveal, RotateText, ScratchReveal } from "./CliffhangerInteractions";
 import InteractiveExample from "./InteractiveExample";
 import type { BlogContentBlock, BlogPost } from "./blogData";
 import { formatBlogDate } from "./blogData";
@@ -60,7 +60,7 @@ export default function BlogPostTemplate({ post, temporary = false }: { post: Bl
                 </header>
 
                 <Image
-                    className="aspect-[16/9] w-full object-cover"
+                    className={`aspect-[16/9] w-full object-cover ${post.slug === "blog-1" ? "object-bottom" : ""}`}
                     src={post.image}
                     alt={post.imageAlt}
                     width={1200}
@@ -105,6 +105,10 @@ export default function BlogPostTemplate({ post, temporary = false }: { post: Bl
 
                         if (block.type === "scratchReveal") {
                             return <ScratchReveal key={index} {...block} />;
+                        }
+
+                        if (block.type === "rotateText") {
+                            return <RotateText key={index} {...block} />;
                         }
 
                         return <BlogDefinition key={index} block={block} temporary={temporary} />;
