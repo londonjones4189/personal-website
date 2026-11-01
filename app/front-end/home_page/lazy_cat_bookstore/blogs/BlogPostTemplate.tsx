@@ -8,7 +8,7 @@ import { formatBlogDate } from "./blogData";
 
 type DefinitionBlock = Extract<BlogContentBlock, { type: "definition" }>;
 
-function renderParagraph(text: string, definitions: DefinitionBlock[]) {
+function renderParagraph(text: string, definitions: DefinitionBlock[], temporary: boolean) {
     if (definitions.length === 0) {
         return text;
     }
@@ -30,7 +30,7 @@ function renderParagraph(text: string, definitions: DefinitionBlock[]) {
         return (
             <Link
                 key={`${definition.id}-${index}`}
-                href={`/front-end/home_page/lazy_cat_bookstore/dictionary#${definition.id}`}
+                href={`${temporary ? "/temporary/dictionary" : "/front-end/home_page/lazy_cat_bookstore/dictionary"}#${definition.id}`}
                 className="font-bold text-[#3380B7] underline decoration-[#3380B7] underline-offset-2 hover:text-black"
             >
                 {part}
@@ -39,13 +39,13 @@ function renderParagraph(text: string, definitions: DefinitionBlock[]) {
     });
 }
 
-export default function BlogPostTemplate({ post }: { post: BlogPost }) {
+export default function BlogPostTemplate({ post, temporary = false }: { post: BlogPost; temporary?: boolean }) {
     const definitions = post.body.filter((block): block is DefinitionBlock => block.type === "definition");
 
     return (
         <main className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
             <Link
-                href="/front-end/home_page/lazy_cat_bookstore"
+                href="/"
                 className="text-sm font-semibold text-black underline decoration-[#3380B7] underline-offset-4 hover:text-black]"
             >
                 Back to Lazy Cat Bookstore
@@ -70,7 +70,7 @@ export default function BlogPostTemplate({ post }: { post: BlogPost }) {
                 <div className="mx-auto max-w-2xl py-8 text-base leading-8 text-gray-800">
                     {post.body.map((block, index) => {
                         if (block.type === "paragraph") {
-                            return <p key={index} className="my-5">{renderParagraph(block.text, definitions)}</p>;
+                            return <p key={index} className="my-5">{renderParagraph(block.text, definitions, temporary)}</p>;
                         }
 
                         if (block.type === "heading") {
@@ -107,7 +107,7 @@ export default function BlogPostTemplate({ post }: { post: BlogPost }) {
                             return <ScratchReveal key={index} {...block} />;
                         }
 
-                        return <BlogDefinition key={index} block={block} />;
+                        return <BlogDefinition key={index} block={block} temporary={temporary} />;
                     })}
                 </div>
             </article>

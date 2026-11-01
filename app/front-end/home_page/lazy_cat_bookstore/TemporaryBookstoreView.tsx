@@ -20,7 +20,7 @@ export default function TemporaryBookstoreView() {
                     {blogPosts.map((post) => (
                         <Link
                             key={post.slug}
-                            href={`/front-end/home_page/lazy_cat_bookstore/blogs/${post.slug}`}
+                            href={`/temporary/blogs/${post.slug}`}
                             className="group flex h-full flex-col overflow-hidden border border-gray-300 bg-white text-left transition hover:border-[#3380B7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3380B7]"
                         >
                             <Image className="aspect-[16/9] w-full object-cover" src={post.image} alt={post.imageAlt} width={1200} height={675} />

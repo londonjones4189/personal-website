@@ -5,7 +5,7 @@ export default function DictionaryPage() {
 	return (
 		<main className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
 			<Link
-				href="/front-end/home_page/lazy_cat_bookstore"
+				href="/"
 				className="text-sm font-semibold text-[#3380B7] underline decoration-[#3380B7] underline-offset-4 hover:text-[#3380B7]"
 			>
 				Back to Lazy Cat Bookstore

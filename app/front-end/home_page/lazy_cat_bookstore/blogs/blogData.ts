@@ -32,7 +32,7 @@ export const blogPosts: BlogPost[] = [blogOnePost, blogThreePost];
 export const dictionaryEntries = blogPosts.flatMap((post) =>
     post.body.flatMap((block) =>
         block.type === "definition"
-            ? [{ ...block, postTitle: post.title, postHref: `/front-end/home_page/lazy_cat_bookstore/blogs/${post.slug}` }]
+            ? [{ ...block, postTitle: post.title, postSlug: post.slug, postHref: `/front-end/home_page/lazy_cat_bookstore/blogs/${post.slug}` }]
             : [],
     ),
 );
