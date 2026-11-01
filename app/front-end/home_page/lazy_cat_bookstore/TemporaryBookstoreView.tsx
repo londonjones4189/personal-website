@@ -10,10 +10,10 @@ export default function TemporaryBookstoreView() {
         <main className="min-h-screen w-full bg-white">
             <header className="flex w-full items-center justify-center gap-4 px-4 py-8">
                 <h1 className={`${handwritten.className} text-center text-5xl font-bold`}>Lazy Cat Bookstore</h1>
-                <Image src="/photos/placeholder.jpeg" width={100} height={100} alt="Lazy Cat Bookstore placeholder artwork" priority />
+                <Image src="/photos/logo.png" width={100} height={100} alt="Lazy Cat Bookstore placeholder artwork" priority />
             </header>
             <section aria-label="Bookstore tagline" className="w-full px-4 pb-6 text-center">
-                <p className={`${handwritten.className} text-4xl font-bold text-[#3380B7]`}>Curl up with a good book.</p>
+                <p className={`${handwritten.className} text-4xl font-bold text-[#3380B7]`}>Curl up with a good book</p>
             </section>
             <section aria-label="Latest blog posts" className="mx-auto w-full max-w-6xl px-4 pb-8">
                 <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
