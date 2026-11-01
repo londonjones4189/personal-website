@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BlogDefinition from "./BlogDefinition";
+import { DragReveal, ScratchReveal } from "./CliffhangerInteractions";
 import InteractiveExample from "./InteractiveExample";
 import type { BlogContentBlock, BlogPost } from "./blogData";
 import { formatBlogDate } from "./blogData";
@@ -30,7 +31,7 @@ function renderParagraph(text: string, definitions: DefinitionBlock[]) {
             <Link
                 key={`${definition.id}-${index}`}
                 href={`/front-end/home_page/lazy_cat_bookstore/dictionary#${definition.id}`}
-                className="font-bold text-pink-800 underline decoration-pink-400 underline-offset-2 hover:text-pink-950"
+                className="font-bold text-[#3380B7] underline decoration-[#3380B7] underline-offset-2 hover:text-black"
             >
                 {part}
             </Link>
@@ -45,13 +46,13 @@ export default function BlogPostTemplate({ post }: { post: BlogPost }) {
         <main className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
             <Link
                 href="/front-end/home_page/lazy_cat_bookstore"
-                className="text-sm font-semibold text-pink-800 underline decoration-pink-400 underline-offset-4 hover:text-pink-950"
+                className="text-sm font-semibold text-black underline decoration-[#3380B7] underline-offset-4 hover:text-black]"
             >
                 Back to Lazy Cat Bookstore
             </Link>
             <article className="mt-8">
                 <header className="mb-8">
-                    <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-pink-800">Lazy Cat Bookstore · Journal</p>
+                    <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-[#3380B7]">Lazy Cat Bookstore · Journal</p>
                     <h1 className="max-w-3xl text-4xl font-bold leading-tight text-gray-950 sm:text-5xl">{post.title}</h1>
                     <time className="mt-4 block text-sm text-gray-600" dateTime={post.publishedAt}>
                         Published {formatBlogDate(post.publishedAt)}
@@ -96,6 +97,14 @@ export default function BlogPostTemplate({ post }: { post: BlogPost }) {
 
                         if (block.type === "interactive") {
                             return <InteractiveExample key={index} {...block} />;
+                        }
+
+                        if (block.type === "dragReveal") {
+                            return <DragReveal key={index} {...block} />;
+                        }
+
+                        if (block.type === "scratchReveal") {
+                            return <ScratchReveal key={index} {...block} />;
                         }
 
                         return <BlogDefinition key={index} block={block} />;

@@ -79,12 +79,12 @@ export default function LazyCatBookstore() {
                         <Link
                             key={post.slug}
                             href={`/front-end/home_page/lazy_cat_bookstore/blogs/${post.slug}`}
-                            className="group flex h-full flex-col overflow-hidden border border-gray-300 bg-white text-left transition hover:border-pink-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-700"
+                            className="group flex h-full flex-col overflow-hidden border border-gray-300 bg-white text-left transition hover:border-[#3380B7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3380B7]"
                         >
                             <Image className="aspect-[16/9] w-full object-cover" src={post.image} alt={post.imageAlt} width={1200} height={675} />
                             <div className="flex flex-1 flex-col p-4">
                                 <time className="text-sm text-gray-600" dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt)}</time>
-                                <h2 className="mt-2 text-xl font-bold text-gray-950 group-hover:text-pink-800">{post.title}</h2>
+                                <h2 className="mt-2 text-xl font-bold text-gray-950 group-hover:text-[#3380B7]">{post.title}</h2>
                                 <p className="mt-2 text-sm leading-6 text-gray-700">{post.excerpt}</p>
                             </div>
                         </Link>

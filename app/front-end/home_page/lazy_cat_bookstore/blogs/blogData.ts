@@ -13,6 +13,8 @@ export type BlogContentBlock =
         successLabel: string;
         successMessage: string;
     }
+    | { type: "dragReveal"; prompt: string; image: string; imageAlt: string }
+    | { type: "scratchReveal"; prompt: string; leadIn: string; murdererName: string }
     | { type: "definition"; id: string; term: string; definition: string };
 
 export type BlogPost = {
