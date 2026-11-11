@@ -1,30 +1,32 @@
+import Link from "next/dist/client/link";
+
 const experiences = [
      {
-        image: "/photos/SupplyTrace.jpeg",
+        image: "/photos/Experiences/SupplyTrace.jpeg",
         company: "SupplyTrace",
         title: "Student Researcher",
         period: "September 2026 - Present",
     },
     {
-        image: "/photos/IBM.jpeg",
+        image: "/photos/Experiences/IBM.jpeg",
         company: "IBM",
         title: "Technical Writing Intern",
         period: "June 2026 - Sept 2026",
     },
      {
-        image: "/photos/CBG.jpeg",
+        image: "/photos/Experiences/CBG.jpeg",
         company: "Clear Ballot Group",
         title: "Software Engineering Co-op",
         period: "January 2026 - June 2026",
     },
     {
-        image: "/photos/Syndey.jpeg",
-        company: "University of TechnologySydney",
+        image: "/photos/Experiences/Sydney.jpeg",
+        company: "University of Technology Sydney",
         title: "Student Researcher",
         period: "June 2025 - Auugust 2025",
     },
     {
-        image: "/photos/Bose.jpeg",
+        image: "/photos/Experiences/Bose.jpeg",
         company: "Bose",
         title: "Copywriter Co-op",
         period: "January 2025 - June 2025",
@@ -34,13 +36,13 @@ const experiences = [
 
 const leadership = [
     {
-        image: "/photos/Develop4Good.jpeg",
+        image: "/photos/Experiences/Develop4Good.jpeg",
         company: "Develop For Good",
         title: "Product Manager",
         period: "October 2026 - Present",
     },
      {
-        image: "/photos/Scout.jpeg",
+        image: "/photos/Experiences/Scout.jpeg",
         company: "Scout",
         title: "Project Manager",
         period: "September 2025 - Present",
@@ -49,9 +51,12 @@ const leadership = [
 export default function MyHome() {
     return (
         <div id="wd-my-home" className="flex w-full flex-col items-start gap-4">
-            <button className="m-4 rounded-[1vw] border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300">
+            <Link
+                href="/front-end/home_page"
+                className="m-4 inline-flex rounded-[1vw] border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300"
+            >
                 Exit
-            </button>
+            </Link>
             <div className="flex w-full items-center justify-center gap-4">
                 <h1 className="text-4xl font-extrabold">My Home</h1>
                 <img src="/photos/placeholder.jpeg" width="100" alt="Placeholder Image" />
@@ -77,7 +82,7 @@ export default function MyHome() {
                 whether through a product, a line of code, or a page of words. It’s the same thing I was doing in that journal as a kid, 
                 and I hope to keep doing it for the rest of my life.</h3>
             <div className="flex w-full items-center gap-4">
-                <h1>Experience</h1>
+                <h1>Places Traveled</h1>
                 <a
                     href="/resume.pdf"
                     download="London-Jones-Resume.pdf"

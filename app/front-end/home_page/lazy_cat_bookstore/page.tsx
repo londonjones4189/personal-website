@@ -63,9 +63,12 @@ export default function LazyCatBookstore() {
 
     return (
         <div className="flex min-h-screen w-full flex-col items-start gap-4 bg-white">
-            <button className="m-4 p-2 rounded-[1vw] border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 focus:ring-4focus:ring-blue-300">
-                Back
-            </button>
+            <Link
+                href="/front-end/home_page"
+                className="m-4 inline-flex rounded-[1vw] border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300"
+            >
+                Exit
+            </Link>
             <div className="flex w-full items-center justify-center gap-4">
                 <h1 className="text-4xl font-extrabold">Lazy Cat Bookstore</h1>
                 <img src="/photos/placeholder.jpeg" width="100" alt="Placeholder Image" />

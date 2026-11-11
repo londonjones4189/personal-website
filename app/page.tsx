@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import TemporaryBookstoreView from "./front-end/home_page/lazy_cat_bookstore/TemporaryBookstoreView";
+import HomePageLayout from "./front-end/home_page/layout";
+import HomePage from "./front-end/home_page/page";
 
 export const metadata: Metadata = {
-  title: "Lazy Cat Bookstore",
-  description: "The Lazy Cat Bookstore blog and portfolio.",
+  title: "London Jones",
+  description: "The portfolio and projects of London Jones.",
 };
 
 export default function Home() {
-  return <TemporaryBookstoreView />;
+  return (
+    <HomePageLayout>
+      <HomePage />
+    </HomePageLayout>
+  );
 }

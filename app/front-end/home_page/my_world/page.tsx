@@ -1,7 +1,7 @@
 export default function MyWorld() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center">
-            <h1 className="text-6xl font-extrabold">Hi, I'm London!</h1>
+            <h1 className="text-6xl font-extrabold">Hi, I&apos;m London!</h1>
             <h1 className="text-4xl font-medium">I am a Creative</h1>
             <label className="inline-flex cursor-pointer items-center">
                 <input type="checkbox" className="peer sr-only" />
